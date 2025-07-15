@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vojenská obuv s.r.o.</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #2f3e2e;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #2f3e2e;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .product a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #2f3e2e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .timeline {
+      border-left: 3px solid #2f3e2e;
+      padding-left: 20px;
+      margin-top: 20px;
+    }
+    .event {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .event::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      background-color: #2f3e2e;
+      border-radius: 50%;
+    }
+    .contact a {
+      color: #2f3e2e;
+      text-decoration: underline;
+    }
+    footer {
+      background-color: #2f3e2e;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Vojenská obuv s.r.o.</h1>
+    <p>Výroba a distribuce taktické obuvi</p>
+  </header>
+
+  <section>
+    <h2>O nás</h2>
+    <p>Jsme český výrobce taktické a vojenské obuvi s více než 20 lety zkušeností. Dodáváme profesionální výstroj pro ozbrojené složky, bezpečnostní agentury i outdoorové nadšence.</p>
+  </section>
+
+  <section>
+    <h2>Naše historie</h2>
+    <div class="timeline">
+      <div class="event">
+        <h4>2003 – Založení firmy</h4>
+        <p>Začínáme s první výrobní halou v Hranicích na Moravě.</p>
+      </div>
+      <div class="event">
+        <h4>2010 – Rozšíření portfolia</h4>
+        <p>Přidáváme nové modely pro bezpečnostní složky a záchranáře.</p>
+      </div>
+      <div class="event">
+        <h4>2020 – Export do zahraničí</h4>
+        <p>Naše obuv se prodává ve více než 15 zemích Evropy.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Produktový katalog</h2>
+    <div class="products">
+      <div class="product">
+        <h3>Model Tactic A1</h3>
+        <p>Lehká taktická bota s protiskluzovou podrážkou a textilní výztuží.</p>
+        <a href="#">Zobrazit detail</a>
+      </div>
+      <div class="product">
+        <h3>Model Combat Pro</h3>
+        <p>Odolná bota pro náročný terén s voděodolnou membránou a zesílenou špičkou.</p>
+        <a href="#">Zobrazit detail</a>
+      </div>
+      <div class="product">
+        <h3>Model Desert X</h3>
+        <p>Písečná varianta pro horké klima s odvětráváním a vysokou stabilitou kotníku.</p>
+        <a href="#">Zobrazit detail</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact">
+    <h2>Kontakt</h2>
+    <p>
+      Vojenská obuv s.r.o.<br>
+      Bojová 12, 100 00 Praha<br>
+      Tel: +420 123 456 789<br>
+      Email: <a href="mailto:info@vojenska-obuv.cz">info@vojenska-obuv.cz</a>
+    </p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Vojenská obuv s.r.o. | Všechna práva vyhrazena.</p>
+  </footer>
+
+</body>
+</html>
