@@ -1,0 +1,106 @@
+body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      color: #333;
+    }
+    header {
+      background-color: #2f3e2e;
+      color: white;
+      padding: 60px 20px;
+      text-align: center;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    h2 {
+      color: #2f3e2e;
+    }
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+    }
+    .product {
+      background-color: white;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    .product a {
+      display: inline-block;
+      margin-top: 10px;
+      color: #2f3e2e;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .timeline {
+      border-left: 3px solid #2f3e2e;
+      padding-left: 20px;
+      margin-top: 20px;
+    }
+    .event {
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .event::before {
+      content: "";
+      position: absolute;
+      left: -11px;
+      top: 5px;
+      width: 14px;
+      height: 14px;
+      background-color: #2f3e2e;
+      border-radius: 50%;
+    }
+    .contact a {
+      color: #2f3e2e;
+      text-decoration: underline;
+    }
+    footer {
+      background-color: #2f3e2e;
+      color: white;
+      text-align: center;
+      padding: 30px 20px;
+      margin-top: 40px;
+    }
+
+    /* --- Detail produktu --- */
+.product-detail {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.detail-img {
+  flex: 1 1 300px;
+  max-width: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.detail-info {
+  flex: 2 1 400px;
+}
+
+.detail-info h2 {
+  margin-top: 0;
+  color: #1c4b45;
+}
+
+.detail-info ul {
+  list-style: disc inside;
+  margin: 1rem 0;
+}
+
+.detail-info ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* Pokud máš tlačítko .btn-primary definované, zůstává stejné */
