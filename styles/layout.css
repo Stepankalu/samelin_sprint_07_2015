@@ -1,0 +1,7 @@
+.header { position: sticky; top: 0; z-index: 40; background: var(--color-elevated); border-bottom: 1px solid var(--color-border); box-shadow: var(--shadow-sm); }
+.navbar { height: 64px; }
+.navbar__brand { font-weight: 700; letter-spacing: .2px; }
+.navbar__actions { gap: var(--space-2); }
+.main { padding-block: var(--space-8); background: var(--color-surface); }
+.section { padding-block: var(--space-8); }
+.footer { background: var(--color-elevated); border-top: 1px solid var(--color-border); padding-block: var(--space-6); color: var(--color-muted); font-size: var(--fs-sm); }
