@@ -1,48 +1,145 @@
 <!DOCTYPE html>
+
 <html lang="cs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Katalog produktů – Samelin</title>
-
-  
-  <link rel="stylesheet" href="styles/styles.css">
-  <link rel="stylesheet" href="styles/style.css?v=2">
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Katalog produktů – Samelin</title>
+<link href="styles/style.css?v=4" rel="stylesheet"/>
+<link href="styles/additions.css?v=2" rel="stylesheet"/>
 </head>
 <body>
+<header>
+<h1>Katalog produktů</h1>
+<p>Prohlédněte si naši nabídku taktické a vojenské obuvi</p>
+<nav>
+<a class="btn" href="index.html">← Zpět na úvod</a>
+</nav>
+</header>
+<main>
+<!-- Produktový katalog -->
+<section>
+<h2>Produktový katalog</h2>
+<div class="product-filters">
+<a class="btn btn-filter" data-cat="" href="products.html">Vše</a>
+<a class="btn btn-filter" data-cat="hasici" href="products.html?cat=hasici">Hasiči</a>
+<a class="btn btn-filter" data-cat="vojaci" href="products.html?cat=vojaci">Vojáci</a>
+<a class="btn btn-filter" data-cat="pracovni" href="products.html?cat=pracovni">Pracovní obuv</a>
+</div>
+<nav class="breadcrumbs"><ul class="crumbs"><li><a href="https://www.sprint.cz/samelin/">Domů</a></li><li><span>Katalog</span></li></ul><div class="pager"><a aria-disabled="true" href="#">‹ Předchozí</a><span class="sep">|</span><a aria-disabled="true" href="#">Další ›</a></div></nav><div class="products">
+<div class="product" data-cat="pracovni">
+<a aria-label="Zobrazit detail: AR8430CTIC" class="product-img-link" href="products/AR8430CTIC.html"><img alt="AR8430CTIC" class="product-img" src="images/AR8430CTIC.png"/></a>
+<h3>AR8430CTIC</h3>
+<p>2491</p>
+<a class="btn btn-secondary" href="products/AR8430CTIC.html">Zobrazit detail</a>
+</div>
+<div class="product" data-cat="vojaci">
+<h3>TITAN</h3>
+<p>598 170/300/353 100/900</p>
+<span aria-disabled="true" class="btn btn-secondary is-disabled" tabindex="-1">Zobrazit detail</span>
+</div>
+<div class="product" data-cat="hasici">
+<h3>TITAN (CE)</h3>
+<p>749 402 100</p>
+<span aria-disabled="true" class="btn btn-secondary is-disabled" tabindex="-1">Zobrazit detail</span>
+</div>
+</div>
+</section>
+</main>
 
-  <header>
-    <h1>Katalog produktů</h1>
-    <p>Prohlédněte si naši nabídku taktické a vojenské obuvi</p>
-    <nav>
-      <a href="index.html" class="btn">← Zpět na úvod</a>
-    </nav>
-  </header>
+<footer>
+<p>© 2025 Vojenská obuv s.r.o. | Všechna práva vyhrazena.</p>
+</footer><script>
+(function(){
+  function qs(){ return new URLSearchParams(location.search); }
+  function getCat(){ try{ return (qs().get('cat')||'').toLowerCase(); }catch(e){ return ''; } }
+  function getPage(){ var p = parseInt(qs().get('page')||'1',10); return isNaN(p)||p<1?1:p; }
+  function getPer(){ var v = parseInt(qs().get('per')||'9',10); return isNaN(v)||v<1?9:v; }
+  function buildUrl(cat, page){
+    var s = [];
+    if (cat) s.push('cat='+encodeURIComponent(cat));
+    if (page>1) s.push('page='+page);
+    var per = qs().get('per');
+    if (per) s.push('per='+encodeURIComponent(per));
+    var q = s.length ? ('?'+s.join('&')) : '';
+    return 'products.html' + q;
+  }
 
-  <main>
-    <!-- Produktový katalog -->
-    <section>
-      <h2>Produktový katalog</h2>
-      <div class="products">
-        <div class="product">
-            <img src="images/AR8430CTIC.png" alt="AR8430CTIC" class="product-img" />
-          <h3>AR8430CTIC</h3>
-          <p>2491</p>
-          <a href="products/AR8430CTIC.html" class="btn btn-secondary">Zobrazit detail</a>
-        </div>
-        <div class="product">
-          <h3>TITAN</h3>
-          <p>598 170/300/353 100/900</p>
-          <a href="#" class="btn btn-secondary">Zobrazit detail</a>
-        </div>
-        <div class="product">
-          <h3>TITAN (CE)</h3>
-          <p>749 402 100</p>
-          <a href="#" class="btn btn-secondary">Zobrazit detail</a>
-        </div>
-      </div>
-    </section>
-  </main>
+  function apply(cat, page){
+    cat = (cat||'').toLowerCase();
+    var allowed = {hasici:1, vojaci:1, pracovni:1};
+    var currentCat = allowed[cat] ? cat : '';
+    var wrap = document.querySelector('.products');
+    if(!wrap) return;
 
+    // Collect items by category
+    var items = Array.prototype.slice.call(wrap.querySelectorAll('.product'));
+    items.forEach(function(el){ el.classList.remove('is-hidden'); });
+
+    var filtered = items.filter(function(el){
+      var c = (el.getAttribute('data-cat')||'').toLowerCase();
+      return (!currentCat || c===currentCat);
+    });
+
+    // Pagination (per from URL; default 9)
+    var per = getPer();
+    var total = Math.max(1, Math.ceil(filtered.length / per));
+    var cur = Math.min(page || 1, total);
+
+    // Hide all then show only current page subset
+    items.forEach(function(el){ el.classList.add('is-hidden'); });
+    filtered.slice((cur-1)*per, cur*per).forEach(function(el){ el.classList.remove('is-hidden'); });
+
+    // Remove ghosts then pad visible to multiple of 3 (visual grid consistency)
+    Array.prototype.slice.call(wrap.querySelectorAll('.product.product--ghost')).forEach(function(g){ g.remove(); });
+    var visible = filtered.slice((cur-1)*per, cur*per).length;
+    var mod = visible % 3;
+    var need = (mod === 0) ? 0 : (3 - mod);
+    for (var i=0; i<need; i++){
+      var ghost = document.createElement('div');
+      ghost.className = 'product product--ghost';
+      ghost.innerHTML = '&nbsp;';
+      wrap.appendChild(ghost);
+    }
+
+    // Activate filter button (if present)
+    document.querySelectorAll('.btn-filter').forEach(function(a){
+      var c = (a.getAttribute('data-cat')||'').toLowerCase();
+      if ((!currentCat && c==='') || (c===currentCat)) a.classList.add('is-active');
+      else a.classList.remove('is-active');
+    });
+
+    // Render pagination above footer (always render, even if 1 page)
+    var pagRoot = document.querySelector('.pagination-root');
+    if (!pagRoot){
+      var footer = document.querySelector('footer');
+      pagRoot = document.createElement('div');
+      pagRoot.className = 'pagination-root';
+      if (footer && footer.parentNode) footer.parentNode.insertBefore(pagRoot, footer);
+      else document.body.appendChild(pagRoot);
+    }
+    var html = '<nav class="pagination" aria-label="Stránkování">';
+    // Prev
+    var prevHref = (cur>1) ? buildUrl(currentCat, cur-1) : '#';
+    html += '<a '+(cur>1?'':'aria-disabled="true"')+' href="'+prevHref+'">‹ Předchozí</a>';
+    // Numbers
+    for (var i=1;i<=total;i++){
+      if (i===cur) html += '<span class="is-current">'+i+'</span>';
+      else html += '<a href="'+buildUrl(currentCat,i)+'">'+i+'</a>';
+    }
+    // Next
+    var nextHref = (cur<total) ? buildUrl(currentCat, cur+1) : '#';
+    html += '<a '+(cur<total?'':'aria-disabled="true"')+' href="'+nextHref+'">Další ›</a>';
+    html += '</nav>';
+    pagRoot.innerHTML = html;
+  }
+
+  // Initial
+  apply(getCat(), getPage());
+
+  // History navigation
+  window.addEventListener('popstate', function(){ apply(getCat(), getPage()); });
+})();
+</script>
 </body>
 </html>
