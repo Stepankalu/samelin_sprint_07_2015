@@ -15,7 +15,7 @@
 }
 .btn:hover { box-shadow: 0 6px 16px rgba(0,0,0,.10); transform: translateY(-1px); }
 .btn:active { transform: translateY(0); box-shadow: 0 1px 2px rgba(0,0,0,.06); }
-.btn-secondary { background: #2f3e2e; color: #ffffff; border-color: #2f3e2e; }
+.btn-secondary { background: #9eab9b; color: #ffffff; border-color: #9eab9b; }
 
 /* Catalog product images unified */
 .products .product .product-img {
@@ -44,9 +44,9 @@
 }
 /* Active filter state */
 .btn-filter.is-active {
-  background: #2f3e2e;
+  background: #9eab9b;
   color: #ffffff;
-  border-color: #2f3e2e;
+  border-color: #9eab9b;
 }
 /* Ghost placeholders to preserve 3-up grid alignment when filtering */
 .product.product--ghost {
@@ -62,18 +62,18 @@
 a.btn-secondary,
 a.btn-secondary:link,
 a.btn-secondary:visited {
-  background-color: #2f3e2e;   /* base green */
+  background-color: #9eab9b;   /* base green */
   color: #fff;
 }
 
 /* Hover: ~6% darker */
 a.btn-secondary:hover {
-  background: color-mix(in oklab, #2f3e2e 94%, black);
+  background: color-mix(in oklab, #9eab9b 94%, black);
 }
 
 /* Active: ~12% darker (no full-black flash) */
 a.btn-secondary:active {
-  background: color-mix(in oklab, #2f3e2e 88%, black);
+  background: color-mix(in oklab, #9eab9b 88%, black);
 }
 
 /* Smooth transitions */
@@ -89,7 +89,7 @@ a.btn-secondary:active {
 
 /* Keyboard focus: visible ring without color shift */
 a.btn-secondary:focus-visible {
-  outline: 2px solid #2f3e2e;
+  outline: 2px solid #9eab9b;
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(47,62,46,.15);
 }
@@ -102,7 +102,7 @@ a.btn-secondary:focus-visible {
   overflow: hidden;       /* keep rounded corners for the image */
 }
 .product a.product-img-link:focus-visible {
-  outline: 2px solid #2f3e2e;
+  outline: 2px solid #9eab9b;
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(47,62,46,.15);
 }
@@ -286,3 +286,185 @@ a.btn-secondary:focus-visible {
   padding: .25rem .4rem;
 }
 .pagination a[aria-disabled="true"] { opacity: .35; }
+
+
+
+
+
+/* === Top bar for products page ======================================= */
+.topbar {
+  background: #9eab9b; /* use current site header color; no new colors introduced */
+  color: #fff;
+}
+.topbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  max-width: 1200px;
+}
+.topbar .brand {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+.topbar .nav-actions .btn.btn-pill {
+  border-radius: 999px;
+  background: #ffffff;
+  color: #0f172a;
+  border: 1px solid rgba(0,0,0,.1);
+  padding: .55rem 1rem;
+}
+.topbar .nav-actions .btn.btn-pill:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0,0,0,.10);
+}
+
+
+/* === Compact page header on catalog page ============================== */
+header.page-header.compact {
+  background: transparent;
+  padding-top: 16px;
+  padding-bottom: 12px;
+  min-height: unset;
+  border-bottom: 0;
+}
+header.page-header.compact .container {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+header.page-header.compact h1 {
+  margin: 0 0 8px;
+}
+
+
+/* === Topbar adjustments: full-width + right-aligned back button ====== */
+.topbar .container { 
+  max-width: none;  /* stretch to full page width */
+  width: 100%;
+}
+.topbar .nav-actions { 
+  margin-left: auto; 
+  display: flex; 
+  align-items: center; 
+}
+
+
+/* === Topbar right padding for action button ========================== */
+.topbar .nav-actions { padding-right: 28px; } /* space from right edge */
+@media (min-width: 1200px){
+  .topbar .container { padding-right: 32px; }
+}
+
+
+/* === Topbar equal left/right spacing ================================= */
+.topbar .container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.topbar .nav-actions { padding-right: 0; margin-right: 0; }
+@media (min-width: 1200px){
+  .topbar .container { padding-left: 20px; padding-right: 20px; }
+}
+
+
+/* === Topbar: center content with fixed max-width ===================== */
+.topbar .container {
+  max-width: 1120px;   /* keeps button away from the hard right edge */
+  margin: 0 auto;
+  padding: 12px 20px;  /* keep the same inner gutters */
+}
+.topbar .nav-actions { margin-left: auto; }
+
+
+/* === Sticky footer (catalog + product details + all pages) =========== */
+html, body { height: 100%; }
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+/* push footer to the bottom when content is short */
+footer { margin-top: auto !important; }
+
+
+/* === Responsive tweaks =============================================== */
+/* Tablets and down */
+@media (max-width: 900px){
+  .topbar .brand { font-size: 1.05rem; }
+  .topbar .container { padding: 10px 16px; }
+  .btn.btn-pill { padding: .5rem .9rem; }
+  .breadcrumbs { font-size: .9rem; }
+  .products { gap: 16px; }
+  .product { padding: 16px; }
+}
+
+/* Phones */
+@media (max-width: 600px){
+  .topbar .container { padding: 10px 14px; }
+  .topbar .brand { font-size: 1rem; }
+  .product-filters { display:flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 12px; }
+  .btn.btn-filter { padding: .45rem .75rem; font-size: .95rem; }
+  .product h3 { font-size: 1.05rem; }
+  .breadcrumbs { font-size: .85rem; }
+  .pagination { font-size: .85rem; }
+}
+
+/* Very small phones */
+@media (max-width: 380px){
+  .product-filters { overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+  .product-filters .btn { display:inline-block; }
+  .btn.btn-pill { padding: .45rem .7rem; }
+}
+
+
+/* === Mobile header & breadcrumbs alignment =========================== */
+@media (max-width: 600px){
+  /* keep same gutters left/right as desktop feel */
+  .topbar .container { padding-left: 20px; padding-right: 20px; }
+  .topbar .nav-actions { padding-right: 0; }
+
+  /* put pager to the right on the breadcrumbs row */
+  .breadcrumbs { 
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between; 
+    gap: 8px;
+    flex-wrap: nowrap;
+  }
+  .breadcrumbs .crumbs { flex: 1 1 auto; min-width: 0; }
+  .breadcrumbs .pager { margin-left: auto; white-space: nowrap; }
+}
+
+
+/* === Mobile breadcrumbs: force single line =========================== */
+@media (max-width: 600px){
+  .breadcrumbs { display:flex; align-items:center; gap:8px; }
+  .breadcrumbs .crumbs{
+    display:flex; gap:6px; 
+    flex-wrap: nowrap;          /* no wrapping on crumbs */
+    min-width: 0;               /* allow ellipsis */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .breadcrumbs .pager{
+    flex: 0 0 auto; 
+    margin-left:auto; 
+    white-space:nowrap;
+  }
+}
+
+
+@media (max-width: 600px){
+  /* force one-line layout with flexible crumbs area */
+  .breadcrumbs { display:flex; align-items:center; }
+  .breadcrumbs .crumbs{ 
+    display:flex; gap:6px; 
+    flex: 1 1 auto;           /* allow shrinking to keep pager on same line */
+    min-width: 0; 
+    white-space: nowrap; 
+    overflow: hidden; text-overflow: ellipsis; 
+    margin-right: 8px;
+  }
+  .breadcrumbs .pager{ flex: 0 0 auto; white-space: nowrap; }
+}

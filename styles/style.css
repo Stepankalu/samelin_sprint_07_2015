@@ -1,11 +1,11 @@
 body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+      background-color: #f9f7f0;
       color: #333;
     }
     header {
-      background-color: #2f3e2e;
+      background-color: #9eab9b;
       color: white;
       padding: 60px 20px;
       text-align: center;
@@ -16,7 +16,7 @@ body {
       margin: auto;
     }
     h2 {
-      color: #2f3e2e;
+      color: #9eab9b;
     }
     .products {
       display: grid;
@@ -32,12 +32,12 @@ body {
     .product a {
       display: inline-block;
       margin-top: 10px;
-      color: #2f3e2e;
+      color: #9eab9b;
       text-decoration: none;
       font-weight: bold;
     }
     .timeline {
-      border-left: 3px solid #2f3e2e;
+      border-left: 3px solid #9eab9b;
       padding-left: 20px;
       margin-top: 20px;
     }
@@ -52,15 +52,15 @@ body {
       top: 5px;
       width: 14px;
       height: 14px;
-      background-color: #2f3e2e;
+      background-color: #9eab9b;
       border-radius: 50%;
     }
     .contact a {
-      color: #2f3e2e;
+      color: #9eab9b;
       text-decoration: underline;
     }
     footer {
-      background-color: #2f3e2e;
+      background-color: #9eab9b;
       color: white;
       text-align: center;
       padding: 30px 20px;
@@ -104,3 +104,6 @@ body {
 }
 
 /* Pokud máš tlačítko .btn-primary definované, zůstává stejné */
+
+
+
